@@ -1,32 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int main()
-{
-    int x;
-    printf("Enter 1 for finding Divisor and 2 for factorial ");
-    scanf("\n%d",&x);
-    if(x==1){
-    int y;
-    printf("Enter the no whose divisor is to be find ");
-    scanf("%d",&y);
-    for (int i=1;i<=y;i++){
-        if(y%i==0){
-            printf("\nThe Divisor's of the given no is %d",i);
-        }
-    }
-    }
-    else if(x==2){
-    int a=1,b;
-    printf("Enter the no whose factorial to be find ");
-    scanf("%d",&b);
-    for (int i=1;i<=b;i++){
-        a=a*i;
-    }
-    printf("%d",a);
+/*n is no of disks to be moved
+s is the source on which disk is placed
+d is the destination to which disk is to be moved
+i is is the inter mediate between source and destination */
+void TOH(int n,char s, char i, char d){
+    if(n==1){
+        printf("\nMove Disk %d from %c to %c",n,s,d);
     }
     else{
-        printf("Idk");
+        TOH(n-1,s,d,i);
+        printf("\nMove Disk %d from %c to %c",n,s,d);
+        TOH(n-1,i,s,d);
+
     }
+
+}
+int main()
+{
+    int n;
+    char A,B,C;
+    printf("Enter the no. of Disks to be moved ");
+    scanf("%d",&n);
+    TOH(n,'A','B','C');
     return 0;
 }
